@@ -5,4 +5,5 @@ export default {
       applicationID: "convex",
     },
   ],
+  siteUrl: "https://daily-to-do-list-app.vercel.app",
 };
