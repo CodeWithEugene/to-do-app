@@ -1,7 +1,7 @@
 "use client"
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { BarChart3, CheckCircle, Clock, AlertTriangle, TrendingUp } from "lucide-react"
+import { CheckCircle, Clock, AlertTriangle, TrendingUp } from "lucide-react"
 
 export default function AnalyticsPage() {
   return (

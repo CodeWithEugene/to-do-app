@@ -1,15 +1,12 @@
 "use client"
 
 import { useState } from "react"
-import { motion } from "framer-motion"
 import { format } from "date-fns"
 import {
   Calendar,
   Clock,
   Flag,
   MoreVertical,
-  CheckCircle2,
-  Circle,
   Trash2,
   Edit,
   AlertCircle,
@@ -24,7 +21,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import { Badge } from "@/components/ui/badge"
-import { Task, Priority } from "@/types/task"
+import { Task } from "@/types/task"
 import { EditTaskDialog } from "./edit-task-dialog"
 
 interface TaskCardProps {

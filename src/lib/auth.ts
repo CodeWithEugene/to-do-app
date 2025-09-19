@@ -1,10 +1,10 @@
-import { NextAuthOptions } from "next-auth"
 import { PrismaAdapter } from "@auth/prisma-adapter"
 import GoogleProvider from "next-auth/providers/google"
 import { prisma } from "@/lib/prisma"
 
-export const authOptions: NextAuthOptions = {
-  adapter: PrismaAdapter(prisma) as any,
+/* eslint-disable @typescript-eslint/no-explicit-any */
+export const authOptions = {
+  adapter: PrismaAdapter(prisma),
   providers: [
     GoogleProvider({
       clientId: process.env.GOOGLE_CLIENT_ID!,
@@ -12,13 +12,13 @@ export const authOptions: NextAuthOptions = {
     }),
   ],
   callbacks: {
-    session: async ({ session, token }) => {
-      if (session?.user && token?.sub) {
+    session: async ({ session, token }: { session: any, token: { sub?: string } }) => {
+      if (token.sub) {
         session.user.id = token.sub
       }
       return session
     },
-    jwt: async ({ user, token }) => {
+    jwt: async ({ user, token }: { user?: { id: string }, token: any }) => {
       if (user) {
         token.uid = user.id
       }
@@ -26,7 +26,7 @@ export const authOptions: NextAuthOptions = {
     },
   },
   session: {
-    strategy: "jwt",
+    strategy: "jwt" as const,
   },
   pages: {
     signIn: "/auth/signin",

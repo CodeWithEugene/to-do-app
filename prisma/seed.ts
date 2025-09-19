@@ -1,4 +1,18 @@
-import { PrismaClient, Priority, RecurringType } from "@prisma/client"
+import { PrismaClient } from "@prisma/client"
+
+const Priority = {
+  LOW: "LOW",
+  MEDIUM: "MEDIUM", 
+  HIGH: "HIGH",
+  URGENT: "URGENT"
+} as const
+
+const RecurringType = {
+  DAILY: "DAILY",
+  WEEKLY: "WEEKLY",
+  MONTHLY: "MONTHLY",
+  YEARLY: "YEARLY"
+} as const
 
 const prisma = new PrismaClient()
 

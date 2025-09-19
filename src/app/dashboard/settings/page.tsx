@@ -7,7 +7,7 @@ import { Label } from "@/components/ui/label"
 import { Input } from "@/components/ui/input"
 import { Switch } from "@/components/ui/switch"
 import { Separator } from "@/components/ui/separator"
-import { Settings, User, Bell, Palette, Shield } from "lucide-react"
+import { User, Bell, Palette, Shield } from "lucide-react"
 import { useSession } from "next-auth/react"
 
 export default function SettingsPage() {

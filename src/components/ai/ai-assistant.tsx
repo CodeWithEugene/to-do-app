@@ -4,7 +4,6 @@ import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
-import { Badge } from "@/components/ui/badge"
 import { Bot, Send, Lightbulb, Calendar, Flag } from "lucide-react"
 import { motion, AnimatePresence } from "framer-motion"
 
@@ -155,9 +154,9 @@ export function AIAssistant({ onTaskCreate }: AIAssistantProps) {
         <div className="text-xs text-muted-foreground">
           <p>Try saying:</p>
           <ul className="list-disc list-inside space-y-1 mt-1">
-            <li>"I have an important meeting tomorrow"</li>
-            <li>"Need to call the client about the project"</li>
-            <li>"Deadline is coming up for the report"</li>
+            <li>&quot;I have an important meeting tomorrow&quot;</li>
+            <li>&quot;Need to call the client about the project&quot;</li>
+            <li>&quot;Deadline is coming up for the report&quot;</li>
           </ul>
         </div>
       </CardContent>

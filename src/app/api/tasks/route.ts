@@ -1,12 +1,13 @@
 import { NextRequest, NextResponse } from "next/server"
-import { getServerSession } from "next-auth"
+import { getServerSession } from "next-auth/next"
 import { authOptions } from "@/lib/auth"
 import { prisma } from "@/lib/prisma"
-import { CreateTaskData, Priority, RecurringType } from "@/types/task"
+import { Session } from "@/types/session"
+import { CreateTaskData, Priority } from "@/types/task"
 
 export async function GET(request: NextRequest) {
   try {
-    const session = await getServerSession(authOptions)
+    const session = await getServerSession(authOptions) as Session | null
     if (!session?.user?.email) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 })
     }
@@ -18,7 +19,7 @@ export async function GET(request: NextRequest) {
     const category = searchParams.get("category") || "all"
     const project = searchParams.get("project") || "all"
 
-    const where: any = {
+    const where: Record<string, unknown> = {
       user: {
         email: session.user.email,
       },
@@ -86,7 +87,7 @@ export async function GET(request: NextRequest) {
 
 export async function POST(request: NextRequest) {
   try {
-    const session = await getServerSession(authOptions)
+    const session = await getServerSession(authOptions) as Session | null
     if (!session?.user?.email) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 })
     }

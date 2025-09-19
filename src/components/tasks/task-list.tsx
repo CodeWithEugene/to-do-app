@@ -1,9 +1,9 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, useCallback } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { TaskCard } from "./task-card"
-import { Task, Priority, RecurringType } from "@/types/task"
+import { Task } from "@/types/task"
 import { useSession } from "next-auth/react"
 
 interface TaskListProps {
@@ -21,13 +21,7 @@ export function TaskList({ status, searchQuery, filters }: TaskListProps) {
   const [loading, setLoading] = useState(true)
   const { data: session } = useSession()
 
-  useEffect(() => {
-    if (session?.user?.email) {
-      fetchTasks()
-    }
-  }, [session, status, searchQuery, filters])
-
-  const fetchTasks = async () => {
+  const fetchTasks = useCallback(async () => {
     try {
       setLoading(true)
       const params = new URLSearchParams({
@@ -46,7 +40,13 @@ export function TaskList({ status, searchQuery, filters }: TaskListProps) {
     } finally {
       setLoading(false)
     }
-  }
+  }, [status, searchQuery, filters])
+
+  useEffect(() => {
+    if (session?.user?.email) {
+      fetchTasks()
+    }
+  }, [session, fetchTasks])
 
   const handleTaskUpdate = (updatedTask: Task) => {
     setTasks(prev => 

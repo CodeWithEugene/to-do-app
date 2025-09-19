@@ -111,6 +111,7 @@ model Task {
   category Category? @relation(fields: [categoryId], references: [id], onDelete: SetNull)
   subtasks Subtask[]
   attachments Attachment[]
+  notifications Notification[]
   googleEventId String?
 }
 
