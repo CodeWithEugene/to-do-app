@@ -3,7 +3,7 @@
 
 A modern, elegant task management application built with React, TypeScript, and Convex. Features a beautiful paper-inspired design with smooth animations and intuitive user experience.
 
-![To-Do App](https://img.shields.io/badge/React-19.0.0-blue) ![TypeScript](https://img.shields.io/badge/TypeScript-5.7.2-blue) ![Convex](https://img.shields.io/badge/Convex-1.21.1-green) ![Tailwind CSS](https://img.shields.io/badge/Tailwind-3.0-orange)
+![To-Do App](https://img.shields.io/badge/React-19.0.0-blue) ![TypeScript](https://img.shields.io/badge/TypeScript-5.7.2-blue) ![Tailwind CSS](https://img.shields.io/badge/Tailwind-3.0-orange)
 
 ## ✨ Features
 
