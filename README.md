@@ -1,170 +1,207 @@
-# To-Do App
+# Todo App - Feature-Rich Task Management
 
-A full-stack to-do application built with React frontend and Node.js/Express backend.
+A comprehensive todo application built with Next.js, TypeScript, and modern web technologies. Features Google Calendar integration, smart task management, and beautiful UI components.
 
-## Features
+## 🚀 Features
 
-- User authentication (register/login)
-- Create, read, update, and delete tasks
-- Task priorities (1-4)
-- Due dates with natural language parsing
-- Subtasks support
-- Project organization
-- Real-time task management
-- Responsive design
+### Core Features
+- ✅ **Task Management**: Create, edit, delete, and complete tasks
+- 📅 **Due Dates & Reminders**: Set due dates and reminder notifications
+- 🏷️ **Priority Levels**: Low, Medium, High, and Urgent priority levels
+- 📁 **Projects & Categories**: Organize tasks with projects and categories
+- 🔄 **Recurring Tasks**: Daily, weekly, monthly, and yearly recurring tasks
+- 🔍 **Search & Filter**: Advanced search and filtering capabilities
+- 📱 **Responsive Design**: Works perfectly on desktop and mobile devices
 
-## Tech Stack
+### Advanced Features
+- 🔐 **Google Authentication**: Secure login with Google OAuth2
+- 📊 **Analytics Dashboard**: Track productivity and completion rates
+- 🌙 **Dark Mode**: Beautiful dark and light themes
+- 📅 **Google Calendar Sync**: Two-way sync with Google Calendar
+- 🤖 **AI Assistant**: Smart suggestions and natural language input
+- 📎 **File Attachments**: Attach files to tasks
+- 🔔 **Notifications**: Browser and email reminders
+- 📤 **Export/Import**: CSV and PDF export capabilities
+- 💾 **Offline Support**: PWA-ready with offline functionality
 
-### Frontend
-- React 19
-- TypeScript
-- Vite
-- Tailwind CSS
-- Framer Motion
-- Axios
+## 🛠️ Tech Stack
 
-### Backend
-- Node.js
-- Express
-- MongoDB with Mongoose
-- JWT Authentication
-- bcryptjs for password hashing
+- **Framework**: Next.js 14 with App Router
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS + shadcn/ui components
+- **Animations**: Framer Motion
+- **Database**: PostgreSQL with Prisma ORM
+- **Authentication**: NextAuth.js with Google OAuth2
+- **Calendar Integration**: Google Calendar API
+- **Deployment**: Vercel-ready
 
-## Project Structure
+## 📦 Installation
+
+1. **Clone the repository**
+   ```bash
+   git clone <repository-url>
+   cd todo-app
+   ```
+
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
+
+3. **Set up environment variables**
+   ```bash
+   cp env.example .env.local
+   ```
+   
+   Fill in the required environment variables:
+   ```env
+   # Database
+   DATABASE_URL="postgresql://username:password@localhost:5432/todoapp?schema=public"
+   
+   # NextAuth.js
+   NEXTAUTH_URL="http://localhost:3000"
+   NEXTAUTH_SECRET="your-secret-key-here"
+   
+   # Google OAuth
+   GOOGLE_CLIENT_ID="your-google-client-id"
+   GOOGLE_CLIENT_SECRET="your-google-client-secret"
+   
+   # Google Calendar API
+   GOOGLE_CALENDAR_API_KEY="your-google-calendar-api-key"
+   ```
+
+4. **Set up the database**
+   ```bash
+   npx prisma generate
+   npx prisma db push
+   ```
+
+5. **Run the development server**
+   ```bash
+   npm run dev
+   ```
+
+6. **Open your browser**
+   Navigate to [http://localhost:3000](http://localhost:3000)
+
+## 🔧 Configuration
+
+### Google OAuth Setup
+
+1. Go to the [Google Cloud Console](https://console.cloud.google.com/)
+2. Create a new project or select an existing one
+3. Enable the Google+ API
+4. Create OAuth 2.0 credentials
+5. Add authorized redirect URIs:
+   - `http://localhost:3000/api/auth/callback/google` (development)
+   - `https://yourdomain.com/api/auth/callback/google` (production)
+
+### Google Calendar API Setup
+
+1. Enable the Google Calendar API in your Google Cloud project
+2. Create an API key
+3. Add the API key to your environment variables
+
+### Database Setup
+
+1. Create a PostgreSQL database
+2. Update the `DATABASE_URL` in your environment variables
+3. Run the Prisma migrations
+
+## 📁 Project Structure
 
 ```
-├── frontend/          # React frontend application
-├── backend/           # Node.js/Express backend API
-├── package.json       # Root package.json for managing both apps
-└── README.md
+src/
+├── app/                    # Next.js App Router
+│   ├── api/               # API routes
+│   │   ├── auth/          # Authentication endpoints
+│   │   ├── tasks/         # Task CRUD operations
+│   │   ├── projects/      # Project management
+│   │   └── categories/    # Category management
+│   ├── auth/              # Authentication pages
+│   ├── dashboard/         # Main application pages
+│   └── globals.css        # Global styles
+├── components/            # React components
+│   ├── ui/               # shadcn/ui components
+│   ├── layout/           # Layout components
+│   ├── tasks/            # Task-related components
+│   └── providers/        # Context providers
+├── lib/                  # Utility functions
+│   ├── auth.ts          # NextAuth configuration
+│   ├── prisma.ts        # Prisma client
+│   └── utils.ts         # Utility functions
+├── types/               # TypeScript type definitions
+└── prisma/              # Database schema and migrations
 ```
 
-## Setup Instructions
+## 🚀 Deployment
 
-### Prerequisites
-- Node.js (v18 or higher)
-- MongoDB (local or MongoDB Atlas)
+### Vercel Deployment
 
-### 1. Install Dependencies
+1. **Connect your repository to Vercel**
+2. **Set environment variables** in Vercel dashboard
+3. **Deploy** - Vercel will automatically build and deploy your app
+
+### Manual Deployment
+
+1. **Build the application**
+   ```bash
+   npm run build
+   ```
+
+2. **Start the production server**
+   ```bash
+   npm start
+   ```
+
+## 🧪 Testing
 
 ```bash
-npm run install:all
+# Run unit tests
+npm run test
+
+# Run e2e tests
+npm run test:e2e
+
+# Run all tests
+npm run test:all
 ```
 
-### 2. Backend Setup
+## 📱 PWA Features
 
-1. Navigate to the backend directory:
-```bash
-cd backend
-```
+The app is PWA-ready with:
+- Service worker for offline functionality
+- App manifest for installation
+- Caching strategies for better performance
+- Offline task management
 
-2. Copy the environment file:
-```bash
-cp env.example .env
-```
+## 🤝 Contributing
 
-3. Update the `.env` file with your configuration:
-```env
-PORT=5000
-MONGODB_URI=mongodb://localhost:27017/todoapp
-JWT_SECRET=your-super-secret-jwt-key-here
-NODE_ENV=development
-```
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
 
-4. Start the backend server:
-```bash
-npm run dev
-```
+## 📄 License
 
-The backend will be available at `http://localhost:5000`
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-### 3. Frontend Setup
+## 🙏 Acknowledgments
 
-1. Navigate to the frontend directory:
-```bash
-cd frontend
-```
+- [Next.js](https://nextjs.org/) for the amazing React framework
+- [shadcn/ui](https://ui.shadcn.com/) for beautiful UI components
+- [Prisma](https://prisma.io/) for the database ORM
+- [NextAuth.js](https://next-auth.js.org/) for authentication
+- [Framer Motion](https://www.framer.com/motion/) for smooth animations
 
-2. Copy the environment file:
-```bash
-cp env.example .env
-```
+## 📞 Support
 
-3. Update the `.env` file if needed:
-```env
-VITE_API_URL=http://localhost:5000/api
-```
+If you have any questions or need help, please:
+- Open an issue on GitHub
+- Check the documentation
+- Contact the development team
 
-4. Start the frontend development server:
-```bash
-npm run dev
-```
+---
 
-The frontend will be available at `http://localhost:5173`
-
-### 4. Run Both Applications
-
-From the root directory, you can run both frontend and backend simultaneously:
-
-```bash
-npm run dev
-```
-
-## API Endpoints
-
-### Authentication
-- `POST /api/auth/register` - Register a new user
-- `POST /api/auth/login` - Login user
-- `GET /api/auth/me` - Get current user
-
-### Tasks
-- `GET /api/tasks` - Get all tasks for user
-- `POST /api/tasks` - Create a new task
-- `GET /api/tasks/:id` - Get a specific task
-- `PUT /api/tasks/:id` - Update a task
-- `PATCH /api/tasks/:id/toggle` - Toggle task completion
-- `DELETE /api/tasks/:id` - Delete a task
-- `POST /api/tasks/:id/subtasks` - Add subtask
-- `PATCH /api/tasks/:id/subtasks/:subtaskId` - Toggle subtask completion
-
-### Projects
-- `GET /api/projects` - Get all projects for user
-- `POST /api/projects` - Create a new project
-- `GET /api/projects/:id` - Get a specific project
-- `PUT /api/projects/:id` - Update a project
-- `DELETE /api/projects/:id` - Delete a project
-- `GET /api/projects/:id/stats` - Get project statistics
-
-## Development
-
-### Backend Development
-```bash
-cd backend
-npm run dev
-```
-
-### Frontend Development
-```bash
-cd frontend
-npm run dev
-```
-
-### Building for Production
-```bash
-npm run build
-```
-
-## Environment Variables
-
-### Backend (.env)
-- `PORT` - Server port (default: 5000)
-- `MONGODB_URI` - MongoDB connection string
-- `JWT_SECRET` - Secret key for JWT tokens
-- `NODE_ENV` - Environment (development/production)
-
-### Frontend (.env)
-- `VITE_API_URL` - Backend API URL
-
-## License
-
-MIT
+**Happy task managing! 🎉**
