@@ -180,7 +180,7 @@ export function CreateTaskDialog({ open, onOpenChange }: CreateTaskDialogProps) 
                   <SelectValue placeholder="Select project" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="">No project</SelectItem>
+                  <SelectItem value="_none">No project</SelectItem>
                   {projects.map((project) => (
                     <SelectItem key={project.id} value={project.id}>
                       {project.name}
@@ -202,7 +202,7 @@ export function CreateTaskDialog({ open, onOpenChange }: CreateTaskDialogProps) 
                   <SelectValue placeholder="Select category" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="">No category</SelectItem>
+                  <SelectItem value="_none">No category</SelectItem>
                   {categories.map((category) => (
                     <SelectItem key={category.id} value={category.id}>
                       {category.name}
@@ -222,7 +222,7 @@ export function CreateTaskDialog({ open, onOpenChange }: CreateTaskDialogProps) 
                   <SelectValue placeholder="No recurring" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="">No recurring</SelectItem>
+                  <SelectItem value="_none">No recurring</SelectItem>
                   <SelectItem value={RecurringType.DAILY}>Daily</SelectItem>
                   <SelectItem value={RecurringType.WEEKLY}>Weekly</SelectItem>
                   <SelectItem value={RecurringType.MONTHLY}>Monthly</SelectItem>
