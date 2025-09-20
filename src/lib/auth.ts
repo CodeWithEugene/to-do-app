@@ -1,6 +1,6 @@
 import GoogleProvider from "next-auth/providers/google"
 import { type JWT } from "next-auth/jwt"
-import { type Session } from "next-auth"
+import type { Session } from "next-auth"
 
 export const authOptions = {
   providers: [
@@ -24,7 +24,7 @@ export const authOptions = {
     },
   },
   session: {
-    strategy: "jwt",
+    strategy: "jwt" as const,
   },
   pages: {
     signIn: "/auth/signin",
